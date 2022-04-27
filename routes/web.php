@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('nick', function () {
+    return "Hello Nick";
+});
+
 Route::get('phpinfo', function () {
     phpinfo();
 });
