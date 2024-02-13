@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\TerminateJob;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('nick', function () {
-    return "Hello Nick";
-});
-
 Route::get('phpinfo', function () {
     phpinfo();
+});
+
+Route::get('job', function () {
+    TerminateJob::dispatchAfterResponse();
+
+    return response()->json([
+        'message' => 'the job was executed'
+    ]);
 });
